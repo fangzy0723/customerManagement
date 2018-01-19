@@ -25,4 +25,9 @@ public class UserController extends BaseController{
         response.setHeader("Access-Control-Allow-Origin", "*");
         return new ResultBean<List<User>>(userService.findAll());
     }
+
+    @RequestMapping("/helloworld")
+    public String helloworld(){
+        return "helloworld";
+    }
 }
