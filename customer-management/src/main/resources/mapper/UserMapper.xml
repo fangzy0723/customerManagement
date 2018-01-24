@@ -6,12 +6,14 @@
 		<id column="id" property="id" />
 		<result column="age" property="age" />
 		<result column="name" property="name" />
+		<result column="password" property="password" />
+		<result column="birthday" property="birthday" />
 	</resultMap>
 
 	<parameterMap id="User" type="cn.com.example.customermanagement.domain.User"/>
 
 	<sql id="Base_Column_List">
-		id, age, name
+		id, age, name,password,birthday
 	</sql>
 	<!--根据name查询数据-->
 	<select id="findByName" resultMap="BaseResultMap" parameterType="java.lang.String">
@@ -40,8 +42,13 @@
 			<if test="name != '' and name != null">
 				name=#{name},
 			</if>
+			<if test="password != '' and password != null">
+				password=#{password},
+			</if>
+			<if test="birthday != null">
+				birthday=#{birthday},
+			</if>
 		</set>
-		/*WHERE id=#{id}*/
 		<where>
 			<if test="id != null">
 				id = #{id}
@@ -50,7 +57,7 @@
 	</update>
 	<!--插入数据-->
 	<insert id="addUser" parameterMap="User">
-		insert into user(age,name) values(#{age},#{name})
+		insert into user(age,name,password,birthday) values(#{age},#{name},#{password},#{birthday})
 	</insert>
 
 </mapper>

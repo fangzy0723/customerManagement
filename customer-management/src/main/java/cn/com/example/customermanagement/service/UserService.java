@@ -14,4 +14,26 @@ public interface UserService {
      * @return
      */
     List<User> findAll();
+    /**
+     * 添加一个用户
+     * @param user
+     */
+    void addUser(User user);
+
+    /**
+     * 根据主键修改用户
+     * @param user
+     */
+    User updateUser(User user);
+
+    /**
+     * 根据主键删除用户
+     * @param id
+     */
+    void deleteUser(Long id);
+    /**
+     * 根据name查询user
+     * @param name
+     */
+    User findByName(String name);
 }

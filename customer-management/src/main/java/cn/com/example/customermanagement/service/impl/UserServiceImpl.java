@@ -20,4 +20,25 @@ public class UserServiceImpl implements UserService {
     public List<User> findAll() {
         return userMapper.findAll();
     }
+
+    @Override
+    public void addUser(User user) {
+        userMapper.addUser(user);
+    }
+
+    @Override
+    public User updateUser(User user) {
+        userMapper.updateUser(user);
+        return user;
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        userMapper.deleteUser(id);
+    }
+
+    @Override
+    public User findByName(String name) {
+        return userMapper.findByName(name);
+    }
 }

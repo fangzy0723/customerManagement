@@ -68,7 +68,7 @@ public class ResultBeansAdvice {
         }else{
             logger.info("这是个ResultBeansAdvice中的未知异常");
             logger.error(pjp.getSignature()+" error ", e);
-            result.setMessage(e.toString());
+            result.setMessage(e.getMessage());
             result.setCode(ResultEnum.UNKONW_ERROR.getCode());
             // 未知异常是应该重点关注的，这里可以做其他操作，如通知邮件，单独写到某个文件等等。
         }
