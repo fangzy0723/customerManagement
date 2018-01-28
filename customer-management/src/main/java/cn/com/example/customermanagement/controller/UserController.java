@@ -7,6 +7,9 @@ import cn.com.example.customermanagement.exception.CustomException;
 import cn.com.example.customermanagement.exception.UserControllerException;
 import cn.com.example.customermanagement.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -96,4 +99,20 @@ public class UserController extends BaseController{
         userService.deleteUser(id);
     }
 
+    /**
+     * 获取登陆用户的全部信息
+     * @param authentication
+     */
+    @GetMapping("/LoginUserDetailsAll")
+    public Authentication LoginUserDetailsAll(Authentication authentication){
+        return authentication;
+    }
+    /**
+     * 获取登陆用户的详细信息
+     * @param userDetails
+     */
+    @GetMapping("/LoginUserDetails")
+    public UserDetails LoginUserDetails(@AuthenticationPrincipal UserDetails userDetails){
+        return userDetails;
+    }
 }
