@@ -41,8 +41,6 @@ public class MyUserDetailsService implements UserDetailsService {
         //4: isAccountNonExpired  用户是否失效
         //5: isAccountNonLocked   用户是否被锁定
         //6: isCredentialsNonExpired  用户正式是否可用
-
-        //commaSeparatedStringToAuthorityList ： 拆分"ROLE_A, ROLE_B, ROLE_C"格式的字符串放到权限列表中（登陆时设置该用户的权限）
-        return new User(username,password,true,true,true,true, AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN"));
+        return new User(username,password,true,true,true,true, AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
     }
 }
