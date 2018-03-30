@@ -161,5 +161,4 @@ public class HttpRequestUtil {
         }
         return jsonResult;
     }
-
 }

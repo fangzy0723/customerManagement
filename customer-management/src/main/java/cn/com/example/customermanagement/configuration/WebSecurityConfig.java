@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -76,6 +77,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         securityProperties.getBorwser().getLoginPage(),
                         "/code/image"
                 ).permitAll()
+                //参考示例：设置LoginUserDetailsAll的get请求是需要ADMIN权限才能访问的（权限规则变是可以这样设置）
+                .antMatchers(HttpMethod.GET,"LoginUserDetailsAll").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
             .formLogin()

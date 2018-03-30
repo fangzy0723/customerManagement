@@ -72,12 +72,12 @@ public class FileUploadController {
                     stream.close();
                 } catch (Exception e) {
                     stream = null;
-                    return "You failed to upload " + i + " => " + e.getMessage();
+                    return "上传失败 " + i + " => " + e.getMessage();
                 }
             } else {
-                return "You failed to upload " + i + " because the file was empty.";
+                return "上传失败，文件为空";
             }
         }
-        return "upload successful";
+        return "上传成功";
     }
 }
