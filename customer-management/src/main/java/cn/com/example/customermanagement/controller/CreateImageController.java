@@ -33,6 +33,7 @@ public class CreateImageController extends BaseController{
     public void createImage() throws IOException {
         ImageCode imageCode = createImageCode(request);
         //把图片对象放到session中
+
         sessionStrategy.setAttribute(new ServletWebRequest(request),SESSION_KEY,imageCode);
         ImageIO.write(imageCode.getBufferedImage(),"JPEG",response.getOutputStream());
     }

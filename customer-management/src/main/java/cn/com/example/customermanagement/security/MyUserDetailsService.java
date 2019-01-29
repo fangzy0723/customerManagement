@@ -37,10 +37,10 @@ public class MyUserDetailsService implements UserDetailsService {
         //1：根据用户名查询数据库
         //2：获取到注册时保存到数据库的密码
         String password = passwordEncoder.encode("123456");
-        //3: isEnabled  用户是否可用
-        //4: isAccountNonExpired  用户是否失效
-        //5: isAccountNonLocked   用户是否被锁定
-        //6: isCredentialsNonExpired  用户正式是否可用
+        //3: isEnabled  账户是否可用
+        //4: isAccountNonExpired  用户是否过期
+        //5: isAccountNonLocked   账户是否被锁定
+        //6: isCredentialsNonExpired  密码是不是过期
         return new User(username,password,true,true,true,true, AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
     }
 }
